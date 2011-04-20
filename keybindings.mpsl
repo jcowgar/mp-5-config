@@ -8,3 +8,6 @@ mp.keycodes['alt-cursor-right'] = 'indent_block';
 mp.keycodes['alt-cursor-left']  = 'deindent_block';
 mp.keycodes['ctrl-p']           = 'open_project_file';
 mp.keycodes['ctrl-k']           = 'delete_to_eol';
+mp.keycodes['ctrl-delete']      = 'delete_word_right';
+mp.keycodes['ctrl-backspace']   = 'delete_word_left';
+
