@@ -1,0 +1,57 @@
+
+mp.syntax.tcl = {
+	'id'	    =>  'tcl',
+	'name'      =>  'tcl',
+	'filenames' =>  [ '/\.tcl$/' ],
+	'defs'      => [
+		'word1', [ 
+			mp.syn_token_list([
+				"after", "append", "apply", "array", "auto_execok", "auto_import", "auto_load",
+				"auto_mkindex", "auto_mkindex_old", "auto_qualify", "auto_reset", "bgerror",
+				"binary", "break", "catch", "cd", "chan", "clock", "close", "concat", "continue",
+				"dde", "dict", "else", "encoding", "eof", "error", "eval", "exec", "exit", "expr",
+				"fblocked", "fconfigure", "fcopy", "file", "fileevent", "filename", "flust",
+				"for", "foreach", "format", "gets", "glob", "global", "history", "http",  "if", 
+				"incr", "info", "interp", "join", "lappend", "lassign", "lindex", "linsert",
+				"list", "llength", "load", "lrange", "lrepeat", "lreplace", "lreverse", "lsearch",
+				"lset", "lsort", "memory", "msgcat", "my", "namespace", "next", "oo::class", 
+				"oo::copy", "oo::define", "oo::objdefine", "oo::object", "open", "package",
+				"parray", "pid", "pkg::create", "pkg_mkIndex", "platform", "platform::shell",
+				"prefix", "proc", "puts", "pwd", "read", "refchan", "regexp", "registry",
+				"regsub", "rename", "return", "scan", "seek", "self", "set", "socket", "source",
+				"split", "string", "subst", "switch", "tell", "throw", "time", "tm", "trace",
+				"transchan", "try", "unknown", "unload", "unset", "update", "uplevel", "upvar",
+				"variable", "vwait", "while", "zlib",
+				"method", "snit", "widget", "hulltype", "delegate", "constructor", "destructor", 
+				"to"
+			])
+		],
+		'word2', [
+			mp.syn_token_list([
+				"bell","font","options","tk_chooseDirectory","tkvars","ttk::scale",
+				"bind","fontchooser","pack","tk_dialog","tkwait","ttk::scrollbar",
+				"bindtags","frame","panedwindow","tk_focusFollowsMouse","toplevel","ttk::separator",
+				"bitmap","grab","photo","tk_focusNext","ttk::button","ttk::sizegrip",
+				"busy","grid","place","tk_focusPrev","ttk::checkbutton","ttk::spinbox",
+				"button","image","radiobutton","tk_getOpenFile","ttk::combobox","ttk::style",
+				"canvas","keysyms","raise","tk_getSaveFile","ttk::entry","ttk::treeview",
+				"checkbutton","label","scale","tk_menuSetFocus","ttk::frame","ttk::widget",
+				"clipboard","labelframe","scrollbar","tk_messageBox","ttk_image",
+				"colors","listbox","selection","tk_optionMenu","ttk::label","ttk_vsapi",
+				"console","loadTk","send","tk_popup","ttk::labelframe","winfo",
+				"cursors","lower","spinbox","tk_setPalette","ttk::menubutton","wm",
+				"destroy","menu","text","tk_textCopy","ttk::notebook",
+				"entry","menubutton","tk","tk_textCut","ttk::panedwindow",
+				"event","message","tk_bisque","tk_textPaste","ttk::progressbar",
+				"focus","option","tk_chooseColor","tkerror","ttk::radiobutton"
+			])
+		],
+		'quotes',	[
+			"/\"([^\"\\\\\n]*(\\\\.[^\"\\\\\n]*)*)\"/",    /* double-quoted strings */
+			"/'([^'\\\\\n]*(\\\\.[^'\\\\\n]*)*)'/",        /* single-quoted strings */
+			"/\b-?[0-9]+\b/"                               /* numbers */
+		],
+		'comments',		[ "/#.*$/m" ]
+	],
+	'section' => [ '/^[ \t]*(proc|method|typemethod)[ \t]*/' ]
+};

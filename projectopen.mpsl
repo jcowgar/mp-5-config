@@ -1,0 +1,23 @@
+
+mp.actions['open_project_file'] = sub(d) {
+	local filename, fh, cmd;
+	
+	filename = null;
+	cmd = mp.config.project_open_command ~ " " ~ d.name;
+	
+	fh = popen(cmd, "r");
+	
+	while(filename == NULL) {
+		sleep(250);
+		filename = read(fh);
+	}
+	
+	close(fh);
+	
+	if (cmp(filename, "<NONE>") != 0) {
+		mp.open(filename);
+	}
+};
+
+mp.actdesc['open_project_file'] = "Open project file";
+

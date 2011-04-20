@@ -1,0 +1,9 @@
+
+mp.keycodes['home']             = 'smart_home';
+mp.keycodes['ctrl-cursor-up']   = 'prev';
+mp.keycodes['ctrl-cursor-down'] = 'next';
+mp.keycodes['ctrl-b']           = 'document_list';
+mp.keycodes['ctrl-l']           = 'section_list';
+mp.keycodes['alt-cursor-right'] = 'indent_block';
+mp.keycodes['alt-cursor-left']  = 'deindent_block';
+mp.keycodes['ctrl-p']           = 'open_project_file';

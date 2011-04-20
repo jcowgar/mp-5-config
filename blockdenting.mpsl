@@ -1,0 +1,112 @@
+
+sub first_non_whitespace(d) 
+/* Return the first non-whitespace X location for current line */
+{
+	local i = 0;
+	local l = split(d.txt.lines[d.txt.y]);
+
+	while (i < size(l) && (cmp(l[i], " ") == 0 || cmp(l[i], "\t") == 0)) {
+		i++;
+	}
+
+	return i;
+}
+
+sub indent_block(d) 
+/* Indent the selected block or current line by one indentation unit */
+{
+	if (d.txt.mark == NULL) {
+		mp.move(d, mp.move_bol);
+		mp.insert_tab(d);
+		return (NULL);
+	}
+	
+	local currentY = d.txt.y;
+	local startY   = d.txt.mark.by;
+	local endY     = d.txt.mark.ey;
+	
+	mp.unmark(d);
+	
+	mp.set_y(d, startY);
+	while (d.txt.y <= endY) {
+		mp.move(d, mp.move_bol);
+		mp.insert_tab(d);
+		mp.move(d, mp.move_down);
+	}
+	
+	mp.set_y(d, startY);
+	mp.move(d, mp.move_bol);
+	mp.mark(d);
+	
+	mp.set_y(d, endY);
+	mp.move(d.mp_move_eol);
+	mp.mark(d);
+	
+	mp.set_y(d, currentY);
+}
+
+mp.actions['indent_block'] = indent_block;
+mp.actdesc['indent_block'] = "Indent block";
+
+sub deindent_line(d)
+/* Deindent the current line by 1 tab or the indent size */
+{
+	local l = split(d.txt.lines[d.txt.y]);
+	
+	mp.move(d, mp.move_bol);
+	
+	if (cmp(l[0], "\t") == 0) {
+		mp.delete_char(d);
+		
+		return;
+	} else {
+		local i = 0;
+		while (i < mp.config.tab_size) {
+			if (cmp(l[i], " ") == 0) {
+				mp.delete_char(d);
+			} else {
+				return;
+			}
+			
+			i++;
+		}
+	}
+	
+	return;
+}
+
+sub deindent_block(d)
+/* Deindent the selected block or current line by one indentation unit */
+{
+	if (d.txt.mark == NULL) {
+		deindent_line(d);
+		return NULL;
+	}
+	
+	local currentY = d.txt.y;
+	local startY   = d.txt.mark.by;
+	local endY     = d.txt.mark.ey;
+	
+	mp.unmark(d);
+	
+	mp.set_y(d, startY);
+	while (d.txt.y <= endY) {
+		mp.move(d, mp.move_bol);
+		if (first_non_whitespace(d) > 0)
+			mp.delete_char(d);
+		mp.move(d, mp.move_down);
+	}
+	
+	mp.set_y(d, startY);
+	mp.move(d, mp.move_bol);
+	mp.mark(d);
+	
+	mp.set_y(d, endY);
+	mp.move(d.mp_move_eol);
+	mp.mark(d);
+	
+	mp.set_y(d, currentY);
+}
+
+mp.actions['deindent_block'] = deindent_block;
+mp.actdesc['deindent_block'] = "Deindent block";

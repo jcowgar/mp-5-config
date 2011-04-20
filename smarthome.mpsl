@@ -1,0 +1,15 @@
+
+sub smart_home(d) 
+/* Move to the first non-whitespace or BOL if already there */
+{
+	local newX = first_non_whitespace(d);
+	
+	if (d.txt.x == newX) {
+		mp.set_x(d, 0);
+	} else {
+		mp.set_x(d, newX);
+	}
+}
+
+mp.actions['smart_home'] = smart_home;
+mp.actdesc['smart_home'] = "Smart home";

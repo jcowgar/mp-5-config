@@ -1,0 +1,5 @@
+
+mp.config.auto_indent = 1;
+mp.config.tab_size = 4;
+mp.config.tabs_as_spaces = 0;
+mp.config.project_open_command = "tclsh " ~ CONFIG_DIR ~ "/projectopen.tcl";
