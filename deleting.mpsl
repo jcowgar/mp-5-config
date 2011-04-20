@@ -1,0 +1,10 @@
+
+mp.actions['delete_to_eol'] = sub(d) {
+	mp.mark(d);
+	mp.move(d, mp.move_eol);
+	mp.mark(d);
+	
+	mp.delete_mark(d);
+}
+
+mp.actdesc['delete_to_eol'] = "Delete to EOL";

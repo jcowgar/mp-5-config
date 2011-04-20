@@ -74,6 +74,7 @@ load("syntax.mpsl");
 load("blockdenting.mpsl");
 load("smarthome.mpsl");
 load("projectopen.mpsl");
+load("deleting.mpsl");
 
 /* misc */
 load("keybindings.mpsl");
