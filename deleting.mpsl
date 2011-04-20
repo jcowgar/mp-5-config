@@ -1,33 +1,17 @@
-
-mp.actions['delete_to_eol'] = sub(d) {
+sub delete_to_move(d, func) {
 	mp.store_undo(d);
 	
 	mp.mark(d);
-	mp.move(d, mp.move_eol);
+	mp.move(d, func);
 	mp.mark(d);
 	
 	mp.delete_mark(d);
-};
-mp.actdesc['delete_to_eol'] = "Delete to EOL";
+}
 
-mp.actions['delete_word_right'] = sub(d) {
-	mp.store_undo(d);
+mp.actions['delete_to_eol']     = sub(d) { delete_to_move(d, mp.move_eol); };
+mp.actions['delete_word_right'] = sub(d) { delete_to_move(d, mp.move_word_right); };
+mp.actions['delete_word_left']  = sub(d) { delete_to_move(d, mp.move_word_left); };
 
-	mp.mark(d);
-	mp.move(d, mp.move_word_right);
-	mp.mark(d);
-	
-	mp.delete_mark(d);
-};
+mp.actdesc['delete_to_eol']     = "Delete to EOL";
 mp.actdesc['delete_word_right'] = "Delete word right";
-
-mp.actions['delete_word_left'] = sub(d) {
-	mp.store_undo(d);
-
-	mp.mark(d);
-	mp.move(d, mp.move_word_left);
-	mp.mark(d);
-	
-	mp.delete_mark(d);
-};
-mp.actdesc['delete_word_left'] = "Delete word left";
+mp.actdesc['delete_word_left']  = "Delete word left";
