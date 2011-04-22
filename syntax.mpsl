@@ -22,7 +22,7 @@ mp.syntax.tcl = {
 				"split", "string", "subst", "switch", "tell", "throw", "time", "tm", "trace",
 				"transchan", "try", "unknown", "unload", "unset", "update", "uplevel", "upvar",
 				"variable", "vwait", "while", "zlib",
-				"method", "snit", "widget", "hulltype", "delegate", "constructor", "destructor", 
+				"method", "typemethod", "snit", "widget", "hulltype", "delegate", "constructor", "destructor", 
 				"to"
 			])
 		],
