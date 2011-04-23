@@ -1,3 +1,41 @@
+mp.syntax.go = {
+	'id'        => 'go',
+	'name'      => 'Go',
+	'filenames' => [ '/\.go$/' ],
+	'defs'      => [
+		'word1', [
+			mp.syn_token_list([
+				"select", "defer", "fallthrough", "range", "type", "return",
+				"import", "package", "if", "else", "switch", "goto", "break",
+				"continue", "case", "default", "for", "struct", "const", 
+				"interface", "func", "var", "chan", "go", "nil", "true", 
+				"false", "iota", "len", "make", "new", "close", "closed", 
+				"cap", "map", "print", "println", "panic", "panicln"
+			])
+		],
+		'word2', [
+			mp.syn_token_list([
+				"uint8", "unit16", "unit32", "uint64", 
+				"int8", "int16", "int32", "int64", 
+				"float32", "float64",
+				"byte", "uint", "int", "float", 
+				"uintptr", "string"
+			])
+		],
+		'quotes', [
+			"/\"([^\"\\\\\n]*(\\\\.[^\"\\\\\n]*)*)\"/",    /* double-quoted strings */
+			"/\b-?[0-9]+\b/",                              /* integer */
+			"/\b-?[0-9]*\\.[0-9]+\b/",                     /* decimal */
+			"/\b0x[0-9A-Fa-f]+\b/",                        /* hex */
+			"/\b0o[0-7]+\b/"                               /* octal */
+		],
+		'comments',	[
+			[ '|/\*|', '|\*/|' ],   /* C-like */
+			'|//.*$|m'              /* C++ like */
+		]
+	],
+	'section' => [ '/^[ \t]*(package|func)[ \t]*/' ]
+};
 
 mp.syntax.tcl = {
 	'id'	    =>  'tcl',
