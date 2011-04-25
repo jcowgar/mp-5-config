@@ -28,8 +28,7 @@ proc find_project {base_dir} {
 		set dir [file join {*}$paths]
 	}
 	
-	# TODO: Possibly throw an error dialog stating no project found, put <NONE> and exit
-	return $dir
+	return $base_dir
 }
 
 proc file_selected {} {

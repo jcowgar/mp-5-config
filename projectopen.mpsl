@@ -3,7 +3,11 @@ mp.actions['open_project_file'] = sub(d) {
 	local filename, fh, cmd;
 	
 	filename = null;
-	cmd = mp.config.project_open_command ~ " " ~ d.name;
+	if (cmp(d.name, "<unnamed>") == 0) {
+		cmd = mp.config.project_open_command;
+	} else {
+		cmd = mp.config.project_open_command ~ " " ~ d.name;
+	}
 	
 	fh = popen(cmd, "r");
 	
