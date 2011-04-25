@@ -1,0 +1,25 @@
+/* Go language helpers (http://golang.org) */
+
+mp.actions['gofmt'] = sub(d) {
+	mp.actions['save'](d);
+	
+	local cmd = sprintf("gofmt -w=true %s", d.name);
+	
+	if ((p = popen(cmd, "r")) != NULL) {
+		local l;
+
+		mp.store_undo(d);
+
+		while ((l = read(p)) != NULL) {
+			l = l;
+		}
+
+		pclose(p);
+	} else {
+		mp.alert("Couldn't execute gofmt");
+	}
+	
+	mp.actions['revert'](d);
+};
+mp.actdesc['gofmt'] = "Format a GO source file";
+
