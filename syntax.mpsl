@@ -23,6 +23,7 @@ mp.syntax.go = {
 			])
 		],
 		'quotes', [
+			[ '|`|', '|`|' ],           /* multi-line string */
 			"/\"([^\"\\\\\n]*(\\\\.[^\"\\\\\n]*)*)\"/",    /* double-quoted strings */
 			"/\b-?[0-9]+\b/",                              /* integer */
 			"/\b-?[0-9]*\\.[0-9]+\b/",                     /* decimal */
