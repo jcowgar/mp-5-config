@@ -5,7 +5,7 @@
 # Configuration
 #
 
-set ignore_regex {^(?!(.*\.(git|hg|svn|exe|dll|obj|o|so|a|lib|png|jpg|gif).*))}
+set ignore_regex {^(?!(.*\.(git|hg|svn|exe|dll|obj|o|so|a|lib|png|jpg|gif|8).*))}
 set project_files {.git Gemfile .hg}
 
 ###########################################################################################
